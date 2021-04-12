@@ -10,7 +10,7 @@ import { CategoryService } from 'src/app/services/category.service';
 export class CategoryComponent implements OnInit {
 
   categories:Category[]=[];
-  currentCategory :Category
+  currentCategory :Category | null
 
   constructor(private categoryService:CategoryService) { }
 
@@ -35,5 +35,17 @@ export class CategoryComponent implements OnInit {
     }else{
       return "list-group-item"
     }
+  }
+
+  getAllCategoryClass(){
+    if(!this.currentCategory){
+      return "list-group-item active"
+    }else{
+      return "list-group-item"
+    }
+  }
+
+  clearCurrentCategory(){
+    this.currentCategory=null
   }
 }
